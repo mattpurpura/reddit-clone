@@ -9,6 +9,7 @@ class Posts extends Component {
     
 
     render(){
+        console.log(Object.keys(this.props.posts))
         if (this.props.loading) {
             return (
                 <div>
@@ -19,11 +20,10 @@ class Posts extends Component {
 
         return (
             <div className='Posts'>
-                {this.props.posts.map((post) => {
-                    console.log(this.props.posts.indexOf(post))
+                {Object.keys(this.props.posts).map((post) => {
                     return(
-                        <div key={this.props.posts.indexOf(post)}>
-                            {post.title}
+                        <div>
+                         {this.props.posts[post].title}
                         </div>
                     )
                 })}

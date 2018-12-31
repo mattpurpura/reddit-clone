@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from "firebase";
-import Posts from '../components/posts'
+import Posts from '../components/posts';
+import AddPost from '../components/AddPost';
 
 class Landing extends Component {
 
@@ -17,9 +18,14 @@ class Landing extends Component {
         let postsRef = firebase.database().ref('posts');
     
         let _this = this;
+        let posts = [];
     
         postsRef.on('value', function(snapshot) {
-          console.log(snapshot.val());
+          snapshot.forEach(post => {
+            posts.push(post.child('title').val());
+          })
+
+          console.log(snapshot.val())
     
           _this.setState({
             posts: snapshot.val(), 
@@ -32,6 +38,7 @@ class Landing extends Component {
         return(
             <div>
                 <Posts posts={this.state.posts} />
+                <AddPost />
             </div>
         )
     }
