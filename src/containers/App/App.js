@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import config from './firebase-config.js';
 import * as firebase from "firebase";
+import Landing from '../../Pages/landing';
+import Posts from "../../components/posts";
 
 class App extends Component {
 
@@ -10,33 +13,14 @@ class App extends Component {
     firebase.initializeApp(config);
   }
 
-  state = {
-    posts: '', 
-    loading: false
-  }
-
-  componentDidMount() {
-    let postsRef = firebase.database().ref('posts');
-
-    let _this = this;
-
-    postsRef.on('value', function(snapshot) {
-      console.log(snapshot.val());
-
-
-
-      _this.setState({
-        posts: snapshot.val(), 
-        loading: false
-      });
-    });
-  }
-
   render() {
+    // console.log(this.state.posts)
     return (
-      <div className="App">
-       Hello World
-      </div>
+     <Router>
+       <Switch>
+          <Route exact path = '/' component= { Landing }/>
+       </Switch>
+     </Router>
     );
   }
 }
