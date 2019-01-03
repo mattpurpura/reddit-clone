@@ -6,10 +6,11 @@ class Posts extends Component {
         super(props)
     }
 
-    
+    goToPost = (postId) => {
+        window.location.assign(`/post/${postId}`);
+    }
 
     render(){
-        console.log(Object.keys(this.props.posts))
         if (this.props.loading) {
             return (
                 <div>
@@ -20,10 +21,10 @@ class Posts extends Component {
 
         return (
             <div className='Posts'>
-                {Object.keys(this.props.posts).map((post) => {
+                {Object.keys(this.props.posts).map((postId) => {
                     return(
-                        <div>
-                         {this.props.posts[post].title}
+                        <div onClick={() => this.goToPost(postId)}>
+                         {this.props.posts[postId].title}
                         </div>
                     )
                 })}
