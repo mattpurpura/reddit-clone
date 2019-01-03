@@ -4,6 +4,7 @@ import config from './firebase-config.js';
 import * as firebase from "firebase";
 import Landing from '../../Pages/landing';
 import Posts from "../../components/posts";
+import PostPage from '../../Pages/PostPage';
 
 class App extends Component {
 
@@ -19,6 +20,7 @@ class App extends Component {
      <Router>
        <Switch>
           <Route exact path = '/' component= { Landing }/>
+          <Route exact path = '/post/:id' component = { PostPage } />
        </Switch>
      </Router>
     );

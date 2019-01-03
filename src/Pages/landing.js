@@ -24,8 +24,6 @@ class Landing extends Component {
           snapshot.forEach(post => {
             posts.push(post.child('title').val());
           })
-
-          console.log(snapshot.val())
     
           _this.setState({
             posts: snapshot.val(), 
