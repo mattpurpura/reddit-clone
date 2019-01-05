@@ -4,10 +4,6 @@ import Posts from '../components/posts';
 import AddPost from '../components/AddPost';
 
 class Landing extends Component {
-
-    constructor() {
-        super();
-      }
     
       state = {
         posts: [], 

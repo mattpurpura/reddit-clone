@@ -3,9 +3,6 @@ import * as firebase from "firebase";
 
 
 class AddPost extends Component {
-    constructor(props){
-        super(props)
-    }
 
     state = {
         title: ''

@@ -3,10 +3,6 @@ import * as firebase from 'firebase';
 
 class CommentBox extends Component {
 
-    constructor(props){
-        super(props)
-    }
-
     state = {
         commentBody: ''
     }
