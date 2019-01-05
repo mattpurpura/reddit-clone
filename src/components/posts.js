@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 class Posts extends Component {
 
-    constructor(props){
-        super(props)
-    }
-
     goToPost = (postId) => {
         window.location.assign(`/post/${postId}`);
     }

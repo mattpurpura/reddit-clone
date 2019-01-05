@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import * as firebase from "firebase";
 import CommentBox from '../components/CommentBox';
+import Comments from '../components/Comments';
+
 
 class PostPage extends Component {
 
     state = {
-        postId: '', 
-        title: '', 
-        body: '', 
+
     }
 
     componentDidMount = () => {
@@ -35,6 +35,7 @@ class PostPage extends Component {
                 <h1>{this.state.title}</h1>
                 <h5>{this.state.body}</h5>
                 <CommentBox postId={this.state.postId} />
+                <Comments postId={this.state.postId} />
             </div>
         )
     }
