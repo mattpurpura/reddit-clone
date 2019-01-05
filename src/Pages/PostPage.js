@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as firebase from "firebase";
+import CommentBox from '../components/CommentBox';
 
 class PostPage extends Component {
 
@@ -33,6 +34,7 @@ class PostPage extends Component {
             <div>
                 <h1>{this.state.title}</h1>
                 <h5>{this.state.body}</h5>
+                <CommentBox postId={this.state.postId} />
             </div>
         )
     }
