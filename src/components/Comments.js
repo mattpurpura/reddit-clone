@@ -8,30 +8,44 @@ class Comments extends Component {
     // }
 
     state = {
-
+        comments: []
     }
 
     componentDidMount = () => {
-        let value = this.props.postId
-        this.grabComments(value);
+        this.setState({
+            postId: this.props.postId
+        }, () => {
+            this.grabComments()
+        })
     }
 
-    grabComments = (postId) => {
-        let commentsRef = firebase.database().ref('comments').orderByChild('postId').equalTo(postId);
+    grabComments = () => {
+        let commentsRef = firebase.database().ref('comments').orderByChild('postId').equalTo(this.props.postId);
         let _this = this;
         // commentsRef.orderByChild('postId').equalTo(this.props.postId).on('value', function(snapshot) {
         //     console.log(snapshot.val());
         // })
 
         commentsRef.on('value', function(snapshot){
-            console.log(snapshot.val())
+            console.log(snapshot.val());
+            let comments = Object.values(snapshot.val())
+            _this.setState({
+                comments: comments
+            })
         })
+
     }
 
     render(){
         return(
             <div>
-
+                {this.state.comments.map((comment) => {
+                    return(
+                        <div>
+                            {comment.body}
+                        </div>
+                    )
+                })}
             </div>
         )
     }

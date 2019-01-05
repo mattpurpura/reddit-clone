@@ -7,9 +7,7 @@ import Comments from '../components/Comments';
 class PostPage extends Component {
 
     state = {
-        postId: '', 
-        title: '', 
-        body: '', 
+
     }
 
     componentDidMount = () => {
