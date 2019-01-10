@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as firebase from "firebase";
 import CommentBox from '../components/CommentBox';
 import Comments from '../components/Comments';
+import HomeButton from '../components/HomeButton';
 
 
 class PostPage extends Component {
@@ -32,6 +33,7 @@ class PostPage extends Component {
     render(){
         return(
             <div>
+                <HomeButton />
                 <h1>{this.state.title}</h1>
                 <h5>{this.state.body}</h5>
                 <CommentBox postId={this.state.postId} />
