@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import VoteButtons from './VoteButtons';
 
 class Posts extends Component {
 
@@ -19,8 +20,12 @@ class Posts extends Component {
             <div className='Posts'>
                 {Object.keys(this.props.posts).map((postId) => {
                     return(
-                        <div onClick={() => this.goToPost(postId)}>
-                         {this.props.posts[postId].title}
+                        <div>
+                            <div onClick={() => this.goToPost(postId)}>
+                            {this.props.posts[postId].title}
+                            </div>
+
+                            <VoteButtons postId={postId} />
                         </div>
                     )
                 })}
