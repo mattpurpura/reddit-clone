@@ -17,9 +17,9 @@ class Landing extends Component {
         let posts = [];
     
         postsRef.on('value', function(snapshot) {
-          snapshot.forEach(post => {
-            posts.push(post.child('title').val());
-          })
+          // snapshot.forEach(post => {
+          //   posts.push(post.child('title').val());
+          // })
     
           _this.setState({
             posts: snapshot.val(), 

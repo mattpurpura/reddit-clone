@@ -21,6 +21,9 @@ class Posts extends Component {
                 {Object.keys(this.props.posts).map((postId) => {
                     return(
                         <div>
+
+                            <div>{this.props.posts[postId].votes}</div>
+
                             <div onClick={() => this.goToPost(postId)}>
                             {this.props.posts[postId].title}
                             </div>
