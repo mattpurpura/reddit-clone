@@ -15,10 +15,24 @@ class Posts extends Component {
                 </div>
             )
         };
-
+console.log(this.props.posts)
         return (
             <div className='Posts'>
-                {Object.keys(this.props.posts).map((postId) => {
+
+                {this.props.posts.map((post) => {
+                    return(
+                        <div key={post.id}>
+
+                            <div>{post.post.votes}</div>
+
+                            <div onClick={()=> this.goToPost(post.id)}>{post.post.title}</div>
+
+                            <VoteButtons postId={post.id} />
+
+                        </div>
+                    )
+                })}
+                {/* {Object.keys(this.props.posts).map((postId) => {
                     return(
                         <div>
 
@@ -31,7 +45,7 @@ class Posts extends Component {
                             <VoteButtons postId={postId} />
                         </div>
                     )
-                })}
+                })} */}
             </div>
         );
     }

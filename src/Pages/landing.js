@@ -11,18 +11,22 @@ class Landing extends Component {
       }
     
       componentDidMount() {
-        let postsRef = firebase.database().ref('posts');
+        let postsRef = firebase.database().ref('posts').orderByChild('votes');
     
         let _this = this;
-        let posts = [];
     
         postsRef.on('value', function(snapshot) {
-          // snapshot.forEach(post => {
-          //   posts.push(post.child('title').val());
-          // })
+          var posts = [];
+          snapshot.forEach(child => {
+            let obj = {
+              id: child.key,
+              post: child.val()
+            }
+            posts.unshift(obj)
+          })
     
           _this.setState({
-            posts: snapshot.val(), 
+            posts: posts, 
             loading: false
           });
         });
