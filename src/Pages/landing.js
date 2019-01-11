@@ -14,9 +14,9 @@ class Landing extends Component {
         let postsRef = firebase.database().ref('posts').orderByChild('votes');
     
         let _this = this;
-        let posts = [];
     
         postsRef.on('value', function(snapshot) {
+          var posts = [];
           snapshot.forEach(child => {
             let obj = {
               id: child.key,
